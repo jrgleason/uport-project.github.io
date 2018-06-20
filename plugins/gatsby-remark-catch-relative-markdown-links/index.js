@@ -1,4 +1,5 @@
 const visit = require('unist-util-visit');
+
 const isRelativeUrl = require(`is-relative-url`);
 const grayMatter = require(`gray-matter`);
 const _ = require("lodash");
@@ -6,29 +7,13 @@ const _ = require("lodash");
 module.exports = ({ markdownAST }) => {
   visit(markdownAST, 'link', node => {
     if (node.url && isRelativeUrl(node.url)) {
-      //convert frontmatter to YAML so grayMatter can read.
-      var _data = markdownAST.children[0]['value']
-      var data = "";
-
-      if(_data){
-        data = grayMatter(`---\n${_data.toString()}\n---\n`)['data'];
-      }
-
-      //console.log(data['title']);
-      // if(data['prefix'] && data['prefix'] != ""){
-      //   console.log(data);
-      //   //setup URL here, add the prefix and fix link.
-      //   //assume prefix's always start with '/'
-      //   node.url = `${data['prefix']}${_.trim(node.url, '.md')}`;
-      //   //console.log(node.url);
-      // } else {
-      //   //node.url = `/${_.kebabCase(data['title'])}`;
-      // }
-
+      // convert frontmatter to YAML so grayMatter can read.
+      const data = markdownAST.children[0].value
+      if(data) grayMatter(`---\n${data.toString()}\n---\n`);
+      // TODO https://eslint.org/docs/rules/no-param-reassign
       node.url = _.replace(node.url, '../', '/');
       node.url = _.replace(node.url, '.md', '');
       node.url = _.replace(node.url, './', '');
-
     }
   });
 

@@ -1,8 +1,4 @@
 import gulp from 'gulp';
-import safeSymlink from './safeSymlink';
-
-let $g = require('gulp-load-plugins')();
-//var frontMatter = require('gulp-front-matter');
 
 gulp.task('copy-markdown', (done) => {
 
@@ -33,6 +29,5 @@ gulp.task('copy-markdown', (done) => {
     .pipe(gulp.dest('./content/public/lambda-olorun'));
 
   done();
-
 
 });

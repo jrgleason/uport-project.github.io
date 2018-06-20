@@ -1,12 +1,13 @@
 import fs from 'fs';
+import log from 'fancy-log';
 
 // safeSymlink synchronously creates a symlink to src if there is no existing
 // file or symlink at dest
-module.exports = function(src, dest) {
+module.exports = function safeSymLink(src, dest) {
   try {
     fs.lstatSync(dest);
   } catch(e) {
-    console.log(`*************: ${src} *****************  ${dest}`);
+    log(`*************: ${src} *****************  ${dest}`);
     fs.symlinkSync(src,dest);
   }
 };

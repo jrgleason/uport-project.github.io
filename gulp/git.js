@@ -3,17 +3,18 @@ import _ from "lodash";
 import fs from "fs";
 import path from "path";
 import gulp from 'gulp';
+import log from 'fancy-log';
 
-let repos = require("../repos");
+const repos = require("../repos");
 
-gulp.task("git:clone", done => {
-  let clones = _.map(repos, (data, name) => {
-    let dest = path.join("repos", name);
+gulp.task("git:clone", () => {
+  _.map(repos, (data, name) => {
+    const dest = path.join("repos", name);
 
     if (fs.existsSync(dest)) {
-      console.log(`info: ${dest} already cloned`);
+      log(`info: ${dest} already cloned`);
     } else {
-      console.log(`cloning....${data.githubURL}`);
+      log(`cloning....${data.githubURL}`);
       if (!data.branch){
         exec(`git clone ${data.githubURL} ${dest}`);
       } else {

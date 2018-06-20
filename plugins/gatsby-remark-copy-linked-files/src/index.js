@@ -41,9 +41,9 @@ const newLinkURL = (linkNode, destinationDir) => {
 }
 
 function toArray(buf) {
-  var arr = new Array(buf.length)
+  const arr = new Array(buf.length)
 
-  for (var i = 0; i < buf.length; i++) {
+  for (let i = 0; i < buf.length; i += 1) {
     arr[i] = buf[i]
   }
 
@@ -91,14 +91,14 @@ module.exports = (
 
         const linkURL = newLinkURL(linkNode, options.destinationDir)
 
-        //we don't want to modify links for relative markdown docs.
+        // we don't want to modify links for relative markdown docs.
         const ext = link.url.split(`.`).pop();
         if (['md', 'markdown'].includes(ext) && ignoreRelativeMarkdownLinks) {
-          //console.log(`ignoring relative markdown link: ${link.url}`);
+          // console.log(`ignoring relative markdown link: ${link.url}`);
           return;
-        } else {
+        } 
           link.url = linkURL;
-        }
+        
         filesToCopy.set(linkPath, newFilePath)
       }
     }
@@ -212,7 +212,7 @@ module.exports = (
       }
     })
 
-    for (let thisImg of imageRefs) {
+    for (const thisImg of imageRefs) {
       try {
         const ext = thisImg
           .attr(`src`)
@@ -240,7 +240,7 @@ module.exports = (
       }
     })
 
-    for (let thisVideo of videoRefs) {
+    for (const thisVideo of videoRefs) {
       try {
         const ext = thisVideo
           .attr(`src`)
@@ -275,7 +275,7 @@ module.exports = (
       }
     })
 
-    for (let thisAudio of audioRefs) {
+    for (const thisAudio of audioRefs) {
       try {
         const ext = thisAudio
           .attr(`src`)
@@ -308,7 +308,7 @@ module.exports = (
       }
     })
 
-    for (let thisATag of aRefs) {
+    for (const thisATag of aRefs) {
       try {
         const ext = thisATag
           .attr(`href`)
@@ -330,7 +330,7 @@ module.exports = (
       }
     }
 
-    return
+    
   })
 
   return Promise.all(

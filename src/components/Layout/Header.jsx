@@ -18,11 +18,11 @@ class MainHeader extends React.Component {
   render () {
     return (
       <SiteContainer>
-        <div className={'Grid Grid--gutters'}>
+        <div className="Grid Grid--gutters">
           <div className='Grid-cell'>
-            <span className={`brand w-nav-brand`}>
-              <Link to='/'>
-                <img src={bannerImg} />
+            <span className="brand w-nav-brand">
+              <Link to='/' href='/'>
+                <img src={bannerImg} alt="TODO" />
               </Link>
             </span>
           </div>
@@ -31,10 +31,11 @@ class MainHeader extends React.Component {
           </div>
           <div className='Grid-cell nav-wrap'>
             <Navigation
-              className={`w-nav`}
+              className="w-nav"
               sections={this.navHeadings()}
               data={this.props.categories.edges}
-              activeCategory={this.props.activeCategory} />
+              activeCategory={this.props.activeCategory}
+            />
           </div>
         </div>
       </SiteContainer>

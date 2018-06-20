@@ -1,4 +1,4 @@
-'use strict';
+
 
 const visit = require(`unist-util-visit`);
 const isRelativeUrl = require(`is-relative-url`);
@@ -35,9 +35,9 @@ const newLinkURL = (linkNode, destinationDir) => {
 };
 
 function toArray(buf) {
-  var arr = new Array(buf.length);
+  const arr = new Array(buf.length);
 
-  for (var i = 0; i < buf.length; i++) {
+  for (let i = 0; i < buf.length; i+=1) {
     arr[i] = buf[i];
   }
 
@@ -75,14 +75,16 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
 
         const linkURL = newLinkURL(linkNode, options.destinationDir);
 
-        //we don't want to modify links for relative markdown docs.
+        // we don't want to modify links for relative markdown docs.
         const ext = link.url.split(`.`).pop();
         if (['md', 'markdown'].includes(ext) && ignoreRelativeMarkdownLinks) {
-          //console.log(`ignoring relative markdown link: ${link.url}`);
+          // console.log(`ignoring relative markdown link: ${link.url}`);
           return;
-        } else {
-          link.url = linkURL;
         }
+        // TODO https://eslint.org/docs/rules/no-param-reassign
+        // eslint-disable-next-line no-param-reassign
+        link.url = linkURL;
+        
         filesToCopy.set(linkPath, newFilePath);
       }
     }
@@ -107,6 +109,8 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
     // use that data to update our ref
     const link = { url: image.attr(`src`) };
     visitor(link);
+    // TODO https://eslint.org/docs/rules/no-param-reassign
+    // eslint-disable-next-line no-param-reassign
     node.value = node.value.replace(new RegExp(image.attr(`src`), `g`), link.url);
 
     let dimensions;
@@ -176,7 +180,8 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    for (let thisImg of imageRefs) {
+    // TODO: FIXME no-restricted-syntax
+    for (const thisImg of imageRefs) {
       try {
         const ext = thisImg.attr(`src`).split(`.`).pop();
         if (options.ignoreFileExtensions.includes(ext)) {
@@ -200,8 +205,8 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         // Ignore
       }
     });
-
-    for (let thisVideo of videoRefs) {
+    // TODO: FIXME no-restricted-syntax
+    for (const thisVideo of videoRefs) {
       try {
         const ext = thisVideo.attr(`src`).split(`.`).pop();
         if (options.ignoreFileExtensions.includes(ext)) {
@@ -230,7 +235,8 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    for (let thisAudio of audioRefs) {
+    // TODO: FIXME
+    for (const thisAudio of audioRefs) {
       try {
         const ext = thisAudio.attr(`src`).split(`.`).pop();
         if (options.ignoreFileExtensions.includes(ext)) {
@@ -257,7 +263,8 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    for (let thisATag of aRefs) {
+    // TODO: FIXME no-restricted-syntax
+    for (const thisATag of aRefs) {
       try {
         const ext = thisATag.attr(`href`).split(`.`).pop();
         if (options.ignoreFileExtensions.includes(ext)) {
@@ -273,7 +280,7 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     }
 
-    return;
+    
   });
 
   return Promise.all(Array.from(filesToCopy, async ([linkPath, newFilePath]) => {

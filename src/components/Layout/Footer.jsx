@@ -36,12 +36,12 @@ class Footer extends React.Component {
   render () {
     return (
       <FooterContainer>
-        <div className={'Grid Grid--gutters'}>
+        <div className="Grid Grid--gutters">
           <div className='Grid-cell'>
             <h2>Join A Network Of Developers Building on uPort</h2>
           </div>
         </div>
-        <div className={'Grid Grid--gutters button-wrap'}>
+        <div className="Grid Grid--gutters button-wrap">
           <div className='Grid-cell'>
             <a href='https://chat.uport.me/'><button>Join The Community</button></a>
           </div>
@@ -84,12 +84,14 @@ class Footer extends React.Component {
           <div className='footer-menu Grid-cell'>
             <h4>About</h4>
             <ul>
-              {/* <li><a href='#'>Mission</a></li> */}
-              {/* <li><a href='#'>Team</a></li> */}
-              <li><a href='https://www.uport.me/job-listings'>Jobs (We're Hiring)</a></li>
+              {/*
+              <li><a href='#'>Mission</a></li>
+              <li><a href='#'>Team</a></li>
+              */}
+              <li><a href='https://www.uport.me/job-listings'>Jobs (We&apos;re Hiring)</a></li>
               <li><a href='https://consensys.net'>ConsenSys</a></li>
             </ul>
-        </div>
+          </div>
         </div>
       </FooterContainer>
     )
