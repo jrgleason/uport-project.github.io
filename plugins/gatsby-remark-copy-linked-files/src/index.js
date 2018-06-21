@@ -6,6 +6,7 @@ const path = require(`path`)
 const _ = require(`lodash`)
 const cheerio = require(`cheerio`)
 const imageSize = require(`probe-image-size`)
+const log = require(`fancy-log`);
 
 const DEPLOY_DIR = `public`
 
@@ -106,7 +107,7 @@ module.exports = (
 
   // Takes a node and generates the needed images and then returns
   // the needed HTML replacement for the image
-  const generateImagesAndUpdateNode = function(image, node) {
+  const generateImagesAndUpdateNode = (image, node) => {
     const imagePath = path.posix.join(
       getNode(markdownNode.parent).dir,
       image.attr(`src`)
@@ -202,7 +203,7 @@ module.exports = (
 
     // Handle Images
     const imageRefs = []
-    $(`img`).each(function() {
+    $(`img`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           imageRefs.push($(this))
@@ -230,7 +231,7 @@ module.exports = (
 
     // Handle video tags.
     const videoRefs = []
-    $(`video source`).each(function() {
+    $(`video source`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           videoRefs.push($(this))
@@ -265,7 +266,7 @@ module.exports = (
 
     // Handle audio tags.
     const audioRefs = []
-    $(`audio source`).each(function() {
+    $(`audio source`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           audioRefs.push($(this))
@@ -298,7 +299,7 @@ module.exports = (
 
     // Handle a tags.
     const aRefs = []
-    $(`a`).each(function() {
+    $(`a`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`href`))) {
           aRefs.push($(this))
@@ -341,7 +342,7 @@ module.exports = (
           await fsExtra.ensureDir(path.dirname(newFilePath))
           await fsExtra.copy(linkPath, newFilePath)
         } catch (err) {
-          console.error(`error copying file`, err)
+          log.error(`error copying file`, err)
         }
       }
     })
