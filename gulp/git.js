@@ -13,14 +13,12 @@ gulp.task("git:clone", (done) => {
     const dest = path.join("repos", name);
     if (fs.existsSync(dest)) {
       log(`info: ${dest} already cloned`);
-    } else {
-      if (!data.branch){
+    } else if (!data.branch){
         exec(`git clone ${data.githubURL} ${dest}`);
         log(`cloning....git clone ${data.githubURL} ${dest}`);
-      } else {
+    } else {
         exec(`git clone -b ${data.branch} ${data.githubURL} ${dest}`);
         log(`cloning....git clone -b ${data.branch} ${data.githubURL} ${dest}`);
-      }
     }
   });
   setTimeout(()=>{
