@@ -17,11 +17,11 @@ export default class ContentTemplate extends React.Component {
         'h2': SecondaryTitle
       }
     }).Compiler
-    const { slug } = this.props.pathContext
-    const postNode = this.props.data.postBySlug
-    const post = postNode.frontmatter
-    const [ category ] = post
-    const categories = []
+    const { slug } = this.props.pathContext;
+    const postNode = this.props.data.postBySlug;
+    const post = postNode.frontmatter;
+    const { category } = post;
+    const categories = [];
     this.props.data.postByCategory.edges.forEach(cat => {
       if (cat.node.frontmatter.category === category) {
         categories.push(cat)

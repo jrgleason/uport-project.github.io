@@ -85,14 +85,23 @@ const StyledLink = styled(Link)`
 `
 
 class Navigation extends React.Component {
+  // TODO: Why is this called 2x
   navListItems() {
     const navItems = []
-
     this.props.sections.forEach(section => {
       if(this.props.data){
         this.props.data.forEach(page => {
           if((page.node.frontmatter.index === 0) && (page.node.frontmatter.category === section)) {
-            const link = (<StyledLink className={`w-nav-link nav-link menu-item ${this.props.activeCategory === section ? 'active' : ''}`} to={`${page.node.fields.slug}`} activeClassName="active" key={section}> {section.charAt(0).toUpperCase() + section.slice(1)} </StyledLink>);
+            const link = (
+              <StyledLink
+                className={`w-nav-link nav-link menu-item ${this.props.activeCategory === section ? 'active' : ''}`}
+                to={`${page.node.fields.slug}`}
+                activeClassName="active"
+                key={section}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </StyledLink>
+            );
             switch(section){
               case "overview":
                 navItems[0] = link;

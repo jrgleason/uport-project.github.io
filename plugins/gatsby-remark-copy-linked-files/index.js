@@ -1,5 +1,3 @@
-'use strict';
-
 const visit = require(`unist-util-visit`);
 const isRelativeUrl = require(`is-relative-url`);
 const fs = require(`fs`);

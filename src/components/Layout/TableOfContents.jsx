@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import _ from 'lodash'
-import { cleanDoubleByteChars } from '../../helpers/cleanDoubleByteChars'
+import cleanDoubleByteChars from '../../helpers/cleanDoubleByteChars'
 
 export default class TableOfContents extends React.Component {
   render () {

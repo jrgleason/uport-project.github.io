@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
-import { cleanDoubleByteChars } from '../../../helpers/cleanDoubleByteChars'
+import cleanDoubleByteChars from '../../../helpers/cleanDoubleByteChars'
 
 class SecondaryTitle extends Component {
   render () {
