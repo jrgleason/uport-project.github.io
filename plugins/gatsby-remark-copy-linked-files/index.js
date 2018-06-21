@@ -1,3 +1,5 @@
+'use strict';
+
 const visit = require(`unist-util-visit`);
 const isRelativeUrl = require(`is-relative-url`);
 const fs = require(`fs`);
@@ -79,8 +81,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
           // console.log(`ignoring relative markdown link: ${link.url}`);
           return;
         }
-        // TODO https://eslint.org/docs/rules/no-param-reassign
-        // eslint-disable-next-line no-param-reassign
         link.url = linkURL;
 
         filesToCopy.set(linkPath, newFilePath);
@@ -107,8 +107,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
     // use that data to update our ref
     const link = { url: image.attr(`src`) };
     visitor(link);
-    // TODO https://eslint.org/docs/rules/no-param-reassign
-    // eslint-disable-next-line no-param-reassign
     node.value = node.value.replace(new RegExp(image.attr(`src`), `g`), link.url);
 
     let dimensions;
@@ -178,7 +176,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    // TODO: FIXME no-restricted-syntax
     for (const thisImg of imageRefs) {
       try {
         const ext = thisImg.attr(`src`).split(`.`).pop();
@@ -203,7 +200,7 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         // Ignore
       }
     });
-    // TODO: FIXME no-restricted-syntax
+
     for (const thisVideo of videoRefs) {
       try {
         const ext = thisVideo.attr(`src`).split(`.`).pop();
@@ -233,7 +230,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    // TODO: FIXME
     for (const thisAudio of audioRefs) {
       try {
         const ext = thisAudio.attr(`src`).split(`.`).pop();
@@ -261,7 +257,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
       }
     });
 
-    // TODO: FIXME no-restricted-syntax
     for (const thisATag of aRefs) {
       try {
         const ext = thisATag.attr(`href`).split(`.`).pop();
