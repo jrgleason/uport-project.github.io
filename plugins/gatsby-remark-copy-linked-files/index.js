@@ -1,4 +1,4 @@
-
+'use strict';
 
 const visit = require(`unist-util-visit`);
 const isRelativeUrl = require(`is-relative-url`);
@@ -37,7 +37,7 @@ const newLinkURL = (linkNode, destinationDir) => {
 function toArray(buf) {
   const arr = new Array(buf.length);
 
-  for (let i = 0; i < buf.length; i+=1) {
+  for (let i = 0; i < buf.length; i += 1) {
     arr[i] = buf[i];
   }
 
@@ -84,7 +84,7 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         // TODO https://eslint.org/docs/rules/no-param-reassign
         // eslint-disable-next-line no-param-reassign
         link.url = linkURL;
-        
+
         filesToCopy.set(linkPath, newFilePath);
       }
     }
@@ -279,8 +279,6 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         // Ignore
       }
     }
-
-    
   });
 
   return Promise.all(Array.from(filesToCopy, async ([linkPath, newFilePath]) => {
