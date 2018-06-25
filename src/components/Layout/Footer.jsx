@@ -86,10 +86,10 @@ class Footer extends React.Component {
             <ul>
               {/* <li><a href='#'>Mission</a></li> */}
               {/* <li><a href='#'>Team</a></li> */}
-              <li><a href='https://www.uport.me/job-listings'>Jobs (We're Hiring)</a></li>
+              <li><a href='https://www.uport.me/job-listings'>Jobs (We&apos;re Hiring)</a></li>
               <li><a href='https://consensys.net'>ConsenSys</a></li>
             </ul>
-        </div>
+          </div>
         </div>
       </FooterContainer>
     )

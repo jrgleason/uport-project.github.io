@@ -37,10 +37,11 @@ class SocialLinks extends Component {
         <RedditShareButton url={url} title={post.title}>
           <RedditIcon round size={iconSize} />
           <RedditShareCount url={url}>
-            {count =>
+            {count =>(
               <div className="share-count">
                 {filter(count)}
-              </div>}
+              </div>
+            )}
           </RedditShareCount>
         </RedditShareButton>
         <TwitterShareButton url={url} title={post.title}>
@@ -49,24 +50,25 @@ class SocialLinks extends Component {
         <GooglePlusShareButton url={url}>
           <GooglePlusIcon round size={iconSize} />
           <GooglePlusShareCount url={url}>
-            {count =>
+            {count =>(
               <div className="share-count">
                 {filter(count)}
-              </div>}
+              </div>
+            )}
           </GooglePlusShareCount>
         </GooglePlusShareButton>
         <FacebookShareButton
           url={url}
           title={post.title}
-        {/* picture={post.cover} */}
           description={postNode.excerpt}
         >
           <FacebookIcon round size={iconSize} />
           <FacebookShareCount url={url}>
-            {count =>
+            {count =>(
               <div className="share-count">
                 {filter(count)}
-              </div>}
+              </div>
+            )}
           </FacebookShareCount>
         </FacebookShareButton>
         <LinkedinShareButton
@@ -76,10 +78,11 @@ class SocialLinks extends Component {
         >
           <LinkedinIcon round size={iconSize} />
           <LinkedinShareCount url={url}>
-            {count =>
+            {count => (
               <div className="share-count">
                 {filter(count)}
-              </div>}
+              </div>
+            )}
           </LinkedinShareCount>
         </LinkedinShareButton>
         <TelegramShareButton url={url}>

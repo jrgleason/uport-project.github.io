@@ -3,12 +3,11 @@ import _ from "lodash";
 import fs from "fs";
 import path from "path";
 import gulp from 'gulp';
-
-let repos = require("../repos");
+import repos from "../repos.json";
 
 gulp.task("git:clone", done => {
-  let clones = _.map(repos, (data, name) => {
-    let dest = path.join("repos", name);
+  _.map(repos, (data, name) => {
+    const dest = path.join("repos", name);
 
     if (fs.existsSync(dest)) {
       console.log(`info: ${dest} already cloned`);
@@ -21,4 +20,5 @@ gulp.task("git:clone", done => {
       }
     }
   });
+  done();
 });
