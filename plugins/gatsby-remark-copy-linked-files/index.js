@@ -77,6 +77,7 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         // we don't want to modify links for relative markdown docs.
         const ext = link.url.split(`.`).pop();
         if (['md', 'markdown'].includes(ext) && ignoreRelativeMarkdownLinks) {
+          // console.log(`ignoring relative markdown link: ${link.url}`);
           return;
         }
         link.url = linkURL;
