@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {Connect, SimpleSigner} from 'uport-connect'
 import "../layouts/css/demo.css"
 
+const Console = window.console;
+
 const QRCode = require('qrcode.react');
 
 const Container = styled.section`
@@ -60,13 +62,13 @@ class Demo extends Component {
                                (uri) => { this.setState({uri, showImage: true, showResult: false});}
     ).then((userProfile) => {
       this.setState({showImage: false, showResult: true, profile: userProfile})
-      console.log(JSON.stringify(userProfile))
+      Console.log(JSON.stringify(userProfile))
     })
     e.preventDefault();
   };
 
   showSample(e) {
-    console.log("sample");
+    Console.log("sample");
     this.setState( { showExample: true } );
     e.preventDefault();
   };

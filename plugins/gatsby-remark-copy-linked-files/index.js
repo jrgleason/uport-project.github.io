@@ -1,13 +1,14 @@
 var _this = this;
 
-const visit = require(`unist-util-visit`);
-const isRelativeUrl = require(`is-relative-url`);
-const fs = require(`fs`);
-const fsExtra = require(`fs-extra`);
-const path = require(`path`);
-const _ = require(`lodash`);
-const cheerio = require(`cheerio`);
-const imageSize = require(`probe-image-size`);
+const log =require('fancy-log');
+const visit = require('unist-util-visit');
+const isRelativeUrl = require('is-relative-url');
+const fs = require('fs');
+const fsExtra = require('fs-extra');
+const path = require('path');
+const _ = require('lodash');
+const cheerio = require('cheerio');
+const imageSize = require('probe-image-size');
 
 const DEPLOY_DIR = `public`;
 
@@ -279,7 +280,7 @@ module.exports = ({ files, markdownNode, markdownAST, getNode }, pluginOptions =
         await fsExtra.ensureDir(path.dirname(newFilePath));
         await fsExtra.copy(linkPath, newFilePath);
       } catch (err) {
-        console.error(`error copying file`, err);
+        log.error(`error copying file`, err);
       }
     }
   }));
