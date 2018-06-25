@@ -1,3 +1,5 @@
+import log from 'fancy-log';
+
 const visit = require(`unist-util-visit`)
 const isRelativeUrl = require(`is-relative-url`)
 const fs = require(`fs`)
@@ -20,6 +22,8 @@ const validateDestinationDir = dir =>
 
 const newFileName = linkNode =>
   `${linkNode.name}-${linkNode.internal.contentDigest}.${linkNode.extension}`
+
+
 
 const newPath = (linkNode, destinationDir) => {
   if (destinationDir) {
@@ -339,7 +343,7 @@ module.exports = (
           await fsExtra.ensureDir(path.dirname(newFilePath))
           await fsExtra.copy(linkPath, newFilePath)
         } catch (err) {
-          console.error(`error copying file`, err)
+          log.error(`error copying file`, err)
         }
       }
     })
