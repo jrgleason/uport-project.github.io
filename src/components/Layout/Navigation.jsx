@@ -103,7 +103,7 @@ class Navigation extends React.Component {
               case "reference":
                 navItems[2] = link;
                 break;
-              default:
+              default:{
                 // keep adding links at index 3 (the first available)
                 const idx = navItems.length - 1;
                 if(idx >= 2){
@@ -111,6 +111,7 @@ class Navigation extends React.Component {
                 } else {
                   navItems.splice(3, 0, link);  // shift entries already assigned to index 3 to the right.
                 };
+              }
             }
           }
         })
@@ -124,16 +125,16 @@ class Navigation extends React.Component {
       <NavContainer>
         <section id='topNav'>
           {this.navListItems()}
-          <a href='https://appmanager.uport.me' className={`nav-link w-nav-link`} target='_blank'> App Manager </a>
-          <a href='https://gitter.im/uport-project/Lobby' className={`nav-link w-nav-link`} target='_blank'> Help </a>
-          <a href='https://medium.com/uport' className={`nav-link w-nav-link`} target='_blank'> Blog </a>
+          <a href='https://appmanager.uport.me' className={`nav-link w-nav-link`} target='_blank' rel="noopener noreferrer" > App Manager </a>
+          <a href='https://gitter.im/uport-project/Lobby' className={`nav-link w-nav-link`} target='_blank' rel="noopener noreferrer" > Help </a>
+          <a href='https://medium.com/uport' className={`nav-link w-nav-link`} target='_blank' rel="noopener noreferrer" > Blog </a>
         </section>
         <div id='responsiveNavContainer'>
           <Menu right isOpen={false} styles={styles}>
             {this.navListItems()}
-            <a href='https://appmanager.uport.me' className={`menu-item`} target='_blank'> App Manager </a>
-            <a href='https://gitter.im/uport-project/Lobby' className={`menu-item`} target='_blank'> Help </a>
-            <a href='https://medium.com/uport' className={`menu-item`} target='_blank'> Blog </a>
+            <a href='https://appmanager.uport.me' className={`menu-item`} target='_blank' rel="noopener noreferrer" > App Manager </a>
+            <a href='https://gitter.im/uport-project/Lobby' className={`menu-item`} target='_blank' rel="noopener noreferrer" > Help </a>
+            <a href='https://medium.com/uport' className={`menu-item`} target='_blank' rel="noopener noreferrer" > Blog </a>
           </Menu>
         </div>
       </NavContainer>

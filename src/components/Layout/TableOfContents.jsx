@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import _ from 'lodash'
-import { cleanDoubleByteChars } from '../../helpers/cleanDoubleByteChars'
+import cleanDoubleByteChars from '../../helpers/cleanDoubleByteChars'
 
 export default class TableOfContents extends React.Component {
   render () {
@@ -36,7 +36,10 @@ export default class TableOfContents extends React.Component {
           if (node.depth === 2) {
             chapterContents.push(
               <ContentContainer key={`${node.value}`}>
-                <Link to={`${cat.path}#${cleanDoubleByteChars(_.kebabCase(node.value))}`}>
+                <Link
+                  to={`${cat.path}#${cleanDoubleByteChars(_.kebabCase(node.value))}`}
+                  href={`${cat.path}#${cleanDoubleByteChars(_.kebabCase(node.value))}`}
+                >
                   <li>
                     <span>
                       {cleanDoubleByteChars(_.kebabCase(node.value)) === urlHash
@@ -53,7 +56,7 @@ export default class TableOfContents extends React.Component {
       }
       listItems.push(
         <li className='chapter' key={`${cat.path}`}>
-          <Link to={`${cat.path}`}>
+          <Link to={`${cat.path}`} href={`${cat.path}`}>
             <span>
               {<h5 className={`tocHeading ${(pathName === cat.path) ? 'active' : ''}`}>{cat.title.charAt(0).toUpperCase() + cat.title.slice(1)}</h5>}
             </span>

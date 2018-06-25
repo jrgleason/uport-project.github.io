@@ -22,7 +22,7 @@ class MainHeader extends React.Component {
           <div className='Grid-cell'>
             <span className={`brand w-nav-brand`}>
               <Link to='/'>
-                <img src={bannerImg} />
+                <img src={bannerImg} alt='' />
               </Link>
             </span>
           </div>
@@ -34,7 +34,8 @@ class MainHeader extends React.Component {
               className={`w-nav`}
               sections={this.navHeadings()}
               data={this.props.categories.edges}
-              activeCategory={this.props.activeCategory} />
+              activeCategory={this.props.activeCategory}
+            />
           </div>
         </div>
       </SiteContainer>

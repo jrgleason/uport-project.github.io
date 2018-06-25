@@ -9,7 +9,7 @@ import BuildingBlocks from '../components/BuildingBlocks'
 import config from '../../data/SiteConfig'
 /* import downloadUport from '../images/download-uport.svg'
  * import registerApp from '../images/register-app.svg'
- * import installSDK from '../images/install-sdk.svg'*/
+ * import installSDK from '../images/install-sdk.svg' */
 import heroImg from '../images/hero-img.svg'
 
 class Index extends React.Component {
@@ -24,7 +24,8 @@ class Index extends React.Component {
             <SiteHeader
               activeCategory={''}
               location={this.props.location}
-              categories={this.props.data.navCategories} />
+              categories={this.props.data.navCategories}
+            />
             <Hero className={`home-hero`}>
               <div className={`hero-wrapper`}>
                 <div className={'Grid Grid--gutters'}>
@@ -54,7 +55,7 @@ class Index extends React.Component {
                   </div>
                   <div className='Grid-cell hero-img-wrap'>
                     <div className={`hero-img`}>
-                      <img src={heroImg} />
+                      <img src={heroImg} alt='' />
                     </div>
                   </div>
                 </div>
@@ -94,8 +95,6 @@ const Hero = styled.div`
 `
 
 const BodyContainer = styled.div`
-  /* padding: ${props => props.theme.sitePadding};*/
-  /* max-width: ${props => props.theme.contentWidthLaptop};*/
   background-color: #F9F9FA;
   margin: 0 auto;
 `
@@ -104,7 +103,7 @@ const FooterContainer = styled.footer`
   clear: all;
 `
 
-/* eslint no-undef: "off"*/
+/* eslint no-undef: "off" */
 export const pageQuery = graphql`
 query IndexQuery {
     allMarkdownRemark(

@@ -41,9 +41,9 @@ const newLinkURL = (linkNode, destinationDir) => {
 }
 
 function toArray(buf) {
-  var arr = new Array(buf.length)
+  const arr = new Array(buf.length)
 
-  for (var i = 0; i < buf.length; i++) {
+  for (let i = 0; i < buf.length; i += 1) {
     arr[i] = buf[i]
   }
 
@@ -91,14 +91,12 @@ module.exports = (
 
         const linkURL = newLinkURL(linkNode, options.destinationDir)
 
-        //we don't want to modify links for relative markdown docs.
+        // we don't want to modify links for relative markdown docs.
         const ext = link.url.split(`.`).pop();
         if (['md', 'markdown'].includes(ext) && ignoreRelativeMarkdownLinks) {
-          //console.log(`ignoring relative markdown link: ${link.url}`);
           return;
-        } else {
-          link.url = linkURL;
         }
+        link.url = linkURL;
         filesToCopy.set(linkPath, newFilePath)
       }
     }
@@ -106,7 +104,7 @@ module.exports = (
 
   // Takes a node and generates the needed images and then returns
   // the needed HTML replacement for the image
-  const generateImagesAndUpdateNode = function(image, node) {
+  const generateImagesAndUpdateNode = (image, node) => {
     const imagePath = path.posix.join(
       getNode(markdownNode.parent).dir,
       image.attr(`src`)
@@ -202,7 +200,7 @@ module.exports = (
 
     // Handle Images
     const imageRefs = []
-    $(`img`).each(function() {
+    $(`img`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           imageRefs.push($(this))
@@ -212,7 +210,7 @@ module.exports = (
       }
     })
 
-    for (let thisImg of imageRefs) {
+    for (const thisImg of imageRefs) {
       try {
         const ext = thisImg
           .attr(`src`)
@@ -230,7 +228,7 @@ module.exports = (
 
     // Handle video tags.
     const videoRefs = []
-    $(`video source`).each(function() {
+    $(`video source`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           videoRefs.push($(this))
@@ -240,7 +238,7 @@ module.exports = (
       }
     })
 
-    for (let thisVideo of videoRefs) {
+    for (const thisVideo of videoRefs) {
       try {
         const ext = thisVideo
           .attr(`src`)
@@ -265,7 +263,7 @@ module.exports = (
 
     // Handle audio tags.
     const audioRefs = []
-    $(`audio source`).each(function() {
+    $(`audio source`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`src`))) {
           audioRefs.push($(this))
@@ -275,7 +273,7 @@ module.exports = (
       }
     })
 
-    for (let thisAudio of audioRefs) {
+    for (const thisAudio of audioRefs) {
       try {
         const ext = thisAudio
           .attr(`src`)
@@ -298,7 +296,7 @@ module.exports = (
 
     // Handle a tags.
     const aRefs = []
-    $(`a`).each(function() {
+    $(`a`).each( () => {
       try {
         if (isRelativeUrl($(this).attr(`href`))) {
           aRefs.push($(this))
@@ -308,7 +306,7 @@ module.exports = (
       }
     })
 
-    for (let thisATag of aRefs) {
+    for (const thisATag of aRefs) {
       try {
         const ext = thisATag
           .attr(`href`)
@@ -330,7 +328,7 @@ module.exports = (
       }
     }
 
-    return
+
   })
 
   return Promise.all(
