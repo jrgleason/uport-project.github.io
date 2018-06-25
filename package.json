@@ -110,7 +110,7 @@
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build && gh-pages -b master -d public",
     "clean": "rm -rf public .cache node_modules/gh-pages/.cache",
-    "lint:js": "eslint --ext .js,.jsx --ignore-pattern public,static .",
+    "lint:js": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public,static .",
     "lint:md": "remark content/public/",
     "write-good": "write-good $(glob 'content/public/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write"
