@@ -9,7 +9,7 @@ import BuildingBlocks from '../components/BuildingBlocks'
 import config from '../../data/SiteConfig'
 /* import downloadUport from '../images/download-uport.svg'
  * import registerApp from '../images/register-app.svg'
- * import installSDK from '../images/install-sdk.svg'*/
+ * import installSDK from '../images/install-sdk.svg' */
 import heroImg from '../images/hero-img.svg'
 
 class Index extends React.Component {
@@ -22,30 +22,43 @@ class Index extends React.Component {
         <main>
           <IndexHeadContainer>
             <SiteHeader
-              activeCategory={''}
+              activeCategory=""
               location={this.props.location}
-              categories={this.props.data.navCategories} />
-            <Hero className={`home-hero`}>
-              <div className={`hero-wrapper`}>
-                <div className={'Grid Grid--gutters'}>
+              categories={this.props.data.navCategories}
+            />
+            <Hero className="home-hero">
+              <div className="hero-wrapper">
+                <div className="Grid Grid--gutters">
                   <div className='Grid-cell hero-left'>
-                    <h1 className='hero-title'>Build with uPort</h1>
-                    <p className='hero-subheading'>Bootstrap your app with single sign on, reusable credentials, mobile signing, and more.</p>
-                    <div className={'Grid Grid--gutters hero-features'}>
+                    <h1 className='hero-title'>
+Build with uPort
+                    </h1>
+                    <p className='hero-subheading'>
+Bootstrap your app with single sign on, reusable credentials, mobile signing, and more.
+                    </p>
+                    <div className="Grid Grid--gutters hero-features">
                       <div className='Grid-cell'>
-                        <h2>Privacy Preserving Single Sign-On</h2>
-                        <p>Enable your ethereum or server app to securely authenticate users.</p>
-                        <div className={`hero-button`}>
-                          <a href='/platform' className={`banner-link`}>
+                        <h2>
+Privacy Preserving Single Sign-On
+                        </h2>
+                        <p>
+Enable your ethereum or server app to securely authenticate users.
+                        </p>
+                        <div className="hero-button">
+                          <a href='/platform' className="banner-link">
                             Enable Single Sign-On
                           </a>
                         </div>
                       </div>
                       <div className='Grid-cell'>
-                        <h2>Exchange Verifiable Credentials</h2>
-                        <p>Issue, request, and verify reusable identity credentials to your users.</p>
-                        <div className={`hero-button`}>
-                          <a href='/gettingstarted' className={`banner-link`}>
+                        <h2>
+Exchange Verifiable Credentials
+                        </h2>
+                        <p>
+Issue, request, and verify reusable identity credentials to your users.
+                        </p>
+                        <div className="hero-button">
+                          <a href='/gettingstarted' className="banner-link">
                            Start Using Credentials
                           </a>
                         </div>
@@ -53,15 +66,15 @@ class Index extends React.Component {
                     </div>
                   </div>
                   <div className='Grid-cell hero-img-wrap'>
-                    <div className={`hero-img`}>
-                      <img src={heroImg} />
+                    <div className="hero-img">
+                      <img src={heroImg} alt='' />
                     </div>
                   </div>
                 </div>
               </div>
             </Hero>
           </IndexHeadContainer>
-          <BodyContainer className={`body-container`}>
+          <BodyContainer className="body-container">
             <Demo />
             <BuildingBlocks />
           </BodyContainer>
@@ -94,8 +107,6 @@ const Hero = styled.div`
 `
 
 const BodyContainer = styled.div`
-  /* padding: ${props => props.theme.sitePadding};*/
-  /* max-width: ${props => props.theme.contentWidthLaptop};*/
   background-color: #F9F9FA;
   margin: 0 auto;
 `
@@ -104,7 +115,7 @@ const FooterContainer = styled.footer`
   clear: all;
 `
 
-/* eslint no-undef: "off"*/
+/* eslint no-undef: "off" */
 export const pageQuery = graphql`
 query IndexQuery {
     allMarkdownRemark(

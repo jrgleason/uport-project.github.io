@@ -20,7 +20,7 @@ export default class ContentTemplate extends React.Component {
     const { slug } = this.props.pathContext
     const postNode = this.props.data.postBySlug
     const post = postNode.frontmatter
-    const category = post.category
+    const { category } = post
     const categories = []
     this.props.data.postByCategory.edges.forEach(cat => {
       if (cat.node.frontmatter.category === category) {
@@ -40,7 +40,9 @@ export default class ContentTemplate extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>{`${post.title} | ${config.siteTitle}`}</title>
+          <title>
+            {`${post.title} | ${config.siteTitle}`}
+          </title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <BodyGrid>
@@ -60,7 +62,7 @@ export default class ContentTemplate extends React.Component {
             />
           </ToCContainer>
           <BodyContainer>
-            <div className={`docSearch-content`}>
+            <div className="docSearch-content">
               { renderAst(postNode.htmlAst) }
             </div>
           </BodyContainer>

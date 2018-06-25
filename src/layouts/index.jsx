@@ -1,11 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
-import styled, {ThemeProvider} from "styled-components"
+import {ThemeProvider} from "styled-components"
 import config from "../../data/SiteConfig";
 import "./css/normalize.css"
 import "./css/webflow.css"
 import "./css/uport-51f8fe-896815bc956b8e53e437c9c3db.webflow.css"
-/* import "./css/prism-okaidia.css"*/
 import "../../node_modules/prism-themes/themes/prism-duotone-light.css"
 import "./css/index.css";
 import theme from './theme'
@@ -42,7 +41,9 @@ export default class MainLayout extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
+          <title>
+            {`${config.siteTitle} |  ${this.getLocalTitle()}`}
+          </title>
           <meta name='description' content={config.siteDescription} />
           <meta name='viewport' content='width=device-width, initial-scale=1' />
         </Helmet>

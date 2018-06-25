@@ -1,10 +1,8 @@
-jest.mock(`fs-extra`, () => {
-  return {
+jest.mock(`fs-extra`, () => ({
     existsSync: () => false,
     copy: jest.fn(),
     ensureDir: jest.fn(),
-  }
-})
+  }))
 const Remark = require(`remark`)
 const fsExtra = require(`fs-extra`)
 const path = require(`path`)
@@ -27,14 +25,12 @@ describe(`gatsby-remark-copy-linked-files`, () => {
   const markdownNode = {
     parent: {},
   }
-  const getNode = () => {
-    return {
+  const getNode = () => ({
       dir: ``,
       internal: {
         type: `File`,
       },
-    }
-  }
+    })
   const getFiles = filePath => [
     {
       absolutePath: path.posix.normalize(filePath),
@@ -49,11 +45,11 @@ describe(`gatsby-remark-copy-linked-files`, () => {
   describe(`images`, () => {
     ;[`svg`, `gif`].forEach(extension => {
       it(`can copy .${extension}`, async () => {
-        const path = `images/sample-image.${extension}`
-        const markdownAST = remark.parse(`![some image](${path})`)
+        const pathUrl = `images/sample-image.${extension}`
+        const markdownAST = remark.parse(`![some image](${pathUrl})`)
 
         await plugin({
-          files: getFiles(path),
+          files: getFiles(pathUrl),
           markdownAST,
           markdownNode,
           getNode,
@@ -67,11 +63,11 @@ describe(`gatsby-remark-copy-linked-files`, () => {
     })
     ;[`png`, `jpg`, `jpeg`].forEach(extension => {
       it(`ignores images with .${extension}`, async () => {
-        const path = `images/sample-image.${extension}`
-        const markdownAST = remark.parse(`![some image](${path})`)
+        const pathUrl = `images/sample-image.${extension}`
+        const markdownAST = remark.parse(`![some image](${pathUrl})`)
 
         await plugin({
-          files: getFiles(path),
+          files: getFiles(pathUrl),
           markdownAST,
           markdownNode,
           getNode,
@@ -83,31 +79,31 @@ describe(`gatsby-remark-copy-linked-files`, () => {
   })
 
   it(`can copy file links`, async () => {
-    const path = `files/sample-file.txt`
+    const pathUrl = `files/sample-file.txt`
 
-    const markdownAST = remark.parse(`[path to file](${path})`)
+    const markdownAST = remark.parse(`[path to file](${pathUrl})`)
 
-    await plugin({ files: getFiles(path), markdownAST, markdownNode, getNode })
+    await plugin({ files: getFiles(pathUrl), markdownAST, markdownNode, getNode })
 
     expect(fsExtra.copy).toHaveBeenCalled()
   })
 
   it(`can copy HTML file links`, async () => {
-    const path = `files/sample-file.txt`
+    const pathUrl = `files/sample-file.txt`
 
-    const markdownAST = remark.parse(`<a href="${path}">link to file</a>`)
+    const markdownAST = remark.parse(`<a href="${pathUrl}">link to file</a>`)
 
-    await plugin({ files: getFiles(path), markdownAST, markdownNode, getNode })
+    await plugin({ files: getFiles(pathUrl), markdownAST, markdownNode, getNode })
 
     expect(fsExtra.copy).toHaveBeenCalled()
   })
 
   it(`can copy HTML images`, async () => {
-    const path = `images/sample-image.gif`
+    const pathUrl = `images/sample-image.gif`
 
-    const markdownAST = remark.parse(`<img src="${path}">`)
+    const markdownAST = remark.parse(`<img src="${pathUrl}">`)
 
-    await plugin({ files: getFiles(path), markdownAST, markdownNode, getNode })
+    await plugin({ files: getFiles(pathUrl), markdownAST, markdownNode, getNode })
 
     expect(fsExtra.copy).toHaveBeenCalled()
   })
@@ -131,13 +127,13 @@ describe(`gatsby-remark-copy-linked-files`, () => {
   })
 
   it(`can copy HTML videos`, async () => {
-    const path = `videos/sample-video.mp4`
+    const pathUrl = `videos/sample-video.mp4`
 
     const markdownAST = remark.parse(
-      `<video controls="controls" autoplay="true" loop="true">\n<source type="video/mp4" src="${path}"></source>\n<p>Your browser does not support the video element.</p>\n</video>`
+      `<video controls="controls" autoplay="true" loop="true">\n<source type="video/mp4" src="${pathUrl}"></source>\n<p>Your browser does not support the video element.</p>\n</video>`
     )
 
-    await plugin({ files: getFiles(path), markdownAST, markdownNode, getNode })
+    await plugin({ files: getFiles(pathUrl), markdownAST, markdownNode, getNode })
 
     expect(fsExtra.copy).toHaveBeenCalled()
   })
@@ -160,11 +156,11 @@ describe(`gatsby-remark-copy-linked-files`, () => {
   })
 
   it(`leaves absolute file paths alone`, async () => {
-    const path = `https://google.com/images/sample-image.gif`
+    const pathUrl = `https://google.com/images/sample-image.gif`
 
-    const markdownAST = remark.parse(`![some absolute image](${path})`)
+    const markdownAST = remark.parse(`![some absolute image](${pathUrl})`)
 
-    await plugin({ files: getFiles(path), markdownAST, markdownNode, getNode })
+    await plugin({ files: getFiles(pathUrl), markdownAST, markdownNode, getNode })
 
     expect(fsExtra.copy).not.toHaveBeenCalled()
   })

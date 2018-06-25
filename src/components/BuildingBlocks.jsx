@@ -65,42 +65,80 @@ class BuildingBlocks extends Component {
     return (
       <Container className='building-blocks'>
         <div className='building-blocks-wrapper'>
-          <h2>Identity Building Blocks</h2>
-          <div className={'Grid Grid--gutters'}>
+          <h2>
+Identity Building Blocks
+          </h2>
+          <div className="Grid Grid--gutters">
             <div className='Grid-cell'>
               <div>
-                <h3>Libraries</h3>
+                <h3>
+Libraries
+                </h3>
                 <div className='block-item'>
-                  <h4><a href='https://github.com/uport-project/uport-connect'>uPort Connect</a></h4>
-                  <p>Single sign-on and transaction signing for your client-side app</p>
-                  <div className={'code-block'}>
-                    <p>npm -i uport-connect</p>
+                  <h4>
+                    <a href='https://github.com/uport-project/uport-connect'>
+uPort Connect
+                    </a>
+                  </h4>
+                  <p>
+Single sign-on and transaction signing for your client-side app
+                  </p>
+                  <div className="code-block">
+                    <p>
+npm -i uport-connect
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <h4><a href='https://github.com/uport-project/uport-js'>uPort JS</a></h4>
-                  <p>Rquest, sign, and issue credentials from your app server</p>
-                  <div className={'code-block'}>
-                    <p>npm -i uport-js</p>
+                  <h4>
+                    <a href='https://github.com/uport-project/uport-js'>
+uPort JS
+                    </a>
+                  </h4>
+                  <p>
+Rquest, sign, and issue credentials from your app server
+                  </p>
+                  <div className="code-block">
+                    <p>
+npm -i uport-js
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className='Grid-cell'>
               <div>
-                <h3>Tools</h3>
+                <h3>
+Tools
+                </h3>
                 <div className='block-item'>
-                  <h4><a href='https://github.com/uport-project/uport-js-client'>uPort JavaScript Client</a></h4>
-                  <p>Single sign-on and transaction signing for your client-side app</p>
-                  <div className={'code-block'}>
-                    <p>npm -i uport-js-client</p>
+                  <h4>
+                    <a href='https://github.com/uport-project/uport-js-client'>
+uPort JavaScript Client
+                    </a>
+                  </h4>
+                  <p>
+Single sign-on and transaction signing for your client-side app
+                  </p>
+                  <div className="code-block">
+                    <p>
+npm -i uport-js-client
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <h4 className={'alpha'}><a href='https://github.com/uport-project/uport-cli-client'>uPort Identity CLI</a></h4>
-                  <p>Create and manage uPort identities from the command line</p>
-                  <div className={'code-block'}>
-                    <p>npm -i uport-cli-client</p>
+                  <h4 className="alpha">
+                    <a href='https://github.com/uport-project/uport-cli-client'>
+uPort Identity CLI
+                    </a>
+                  </h4>
+                  <p>
+Create and manage uPort identities from the command line
+                  </p>
+                  <div className="code-block">
+                    <p>
+npm -i uport-cli-client
+                    </p>
                   </div>
                 </div>
               </div>

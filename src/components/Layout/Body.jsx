@@ -11,8 +11,10 @@ class Body extends React.Component {
   render() {
     return(
       <Container>
-        <h1>Body</h1>
-        <PostListing postEdges = />
+        <h1>
+Body
+        </h1>
+        <PostListing postEdges='' />
       </Container>
     )
   }

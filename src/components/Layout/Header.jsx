@@ -15,14 +15,15 @@ class MainHeader extends React.Component {
     })
     return navHeadings
   }
+
   render () {
     return (
       <SiteContainer>
-        <div className={'Grid Grid--gutters'}>
+        <div className="Grid Grid--gutters">
           <div className='Grid-cell'>
-            <span className={`brand w-nav-brand`}>
+            <span className="brand w-nav-brand">
               <Link to='/'>
-                <img src={bannerImg} />
+                <img src={bannerImg} alt='' />
               </Link>
             </span>
           </div>
@@ -31,10 +32,11 @@ class MainHeader extends React.Component {
           </div>
           <div className='Grid-cell nav-wrap'>
             <Navigation
-              className={`w-nav`}
+              className="w-nav"
               sections={this.navHeadings()}
               data={this.props.categories.edges}
-              activeCategory={this.props.activeCategory} />
+              activeCategory={this.props.activeCategory}
+            />
           </div>
         </div>
       </SiteContainer>

@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 class ctaButton extends Component {
   render() {
-    const { children } = this.props
+    const { children, to } = this.props
     return(
-      <Link style={{border: 'none'}} to={this.props.to}>
+      <Link style={{border: 'none'}} to={to}>
         <ButtonContainer>
           {children}
         </ButtonContainer>
@@ -18,16 +18,16 @@ class ctaButton extends Component {
 export default ctaButton
 
 const ButtonContainer = styled.div`
-  border: 1px solid ${props => props.theme.brand};
+  border: 1px solid ${({theme}) => theme.brand};
   border-radius: 3px;
   padding: 25px;
   font-size: 2rem;
-  color: ${props => props.theme.brand};
+  color: ${({theme}) => theme.brand};
   display: inline-block;
   transition: all .3s ease;
   
   &:hover {
     color: white;
-    background: ${props => props.theme.brand};
+    background: ${({theme}) => theme.brand};
   }
 `
